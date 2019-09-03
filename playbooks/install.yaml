@@ -1,0 +1,34 @@
+---
+- hosts: ci-node
+  tasks:
+    - name: Install requirements
+      become: yes
+      package:
+        name:
+          - python3-pyyaml
+          - python3-pip
+          - podman
+          - buildah
+          - libnotify
+
+    - name: Install podenv
+      command: python3 -m pip install --user .
+      args:
+        chdir: '{{ zuul.projects["github.com/podenv/podenv"].src_dir }}'
+
+    - name: Create podenv local configuration
+      file:
+        path: '{{ ansible_env.HOME }}/.config/podenv/registries'
+        state: directory
+        recurse: true
+
+    - name: Inject podhub local copy
+      file:
+        src: '{{ ansible_env.HOME }}/{{ zuul.projects["github.com/podenv/hub"].src_dir }}'
+        dest: '{{ ansible_env.HOME }}/.config/podenv/registries/github-com:podenv:hub'
+        state: link
+
+    - name: Ensure hub is up-to-date
+      file:
+        path: '{{ zuul.projects["github.com/podenv/hub"].src_dir }}/.git'
+        state: touch
