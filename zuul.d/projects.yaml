@@ -1,0 +1,29 @@
+---
+- project:
+    name: podenv/ci
+    check:
+      jobs:
+        - linters
+    gate:
+      jobs:
+        - linters
+
+- project:
+    name: podenv/podenv
+    check:
+      jobs:
+        - podenv-test
+    gate:
+      jobs:
+        - podenv-test
+
+- project:
+    name: podenv/hub
+    check:
+      jobs:
+        - linters
+        - podenv-hub
+    gate:
+      jobs:
+        - linters
+        - podenv-hub
