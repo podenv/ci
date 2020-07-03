@@ -25,6 +25,5 @@
             nodeset:
               nodes:
                 - name: container
-                  label: dhall-1-33
+                  label: pod-dhall-1-33
     gate: *jobs
-
