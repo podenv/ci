@@ -17,9 +17,3 @@
     description: Test podenv
     parent: podenv-base
     run: playbooks/tests.yaml
-
-- job:
-    name: podenv-hub
-    description: Test hub schema
-    parent: podenv-base
-    run: playbooks/hub.yaml

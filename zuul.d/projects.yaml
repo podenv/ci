@@ -19,11 +19,12 @@
 
 - project:
     name: podenv/hub
-    check:
+    check: &jobs
       jobs:
-        - linters
-        - podenv-hub
-    gate:
-      jobs:
-        - linters
-        - podenv-hub
+        - dhall-diff:
+            nodeset:
+              nodes:
+                - name: container
+                  label: dhall-1-33
+    gate: *jobs
+
