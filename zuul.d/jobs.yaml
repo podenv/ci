@@ -3,7 +3,4 @@
     name: podenv-unit
     description: Podenv unit test job
     run: playbooks/unit.yaml
-    nodeset:
-      nodes:
-        - name: ci-node
-          label: python-latest-pod
+    nodeset: python-latest-pod
