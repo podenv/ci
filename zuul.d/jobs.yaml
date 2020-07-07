@@ -1,19 +1,9 @@
 ---
 - job:
-    name: podenv-base
-    description: Podenv base job
-    required-projects:
-      - podenv/podenv
-      - podenv/hub
-    pre-run: playbooks/install.yaml
+    name: podenv-unit
+    description: Podenv unit test job
+    run: playbooks/unit.yaml
     nodeset:
       nodes:
         - name: ci-node
-          label: cloud-fedora-30
-    attempts: 1
-
-- job:
-    name: podenv-test
-    description: Test podenv
-    parent: podenv-base
-    run: playbooks/tests.yaml
+          label: python-latest-pod

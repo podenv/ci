@@ -1,5 +1,0 @@
----
-- hosts: ci-node
-  tasks:
-    - name: Ensure podenv --list work
-      command: podenv --list

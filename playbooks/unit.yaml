@@ -6,12 +6,13 @@
       package:
         name:
           - python3-pyyaml
-          - python3-pip
-          - podman
-          - buildah
-          - libnotify
+          - python3-mypy
+          - python3-flake8
+          - make
+          - bzip2
+          - findutils
 
-    - name: Install podenv
-      command: python3 -m pip install --user .
+    - name: Run test
+      command: make
       args:
         chdir: '{{ zuul.projects["github.com/podenv/podenv"].src_dir }}'
