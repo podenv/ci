@@ -22,4 +22,7 @@
               nodes:
                 - name: container
                   label: pod-dhall-1-33
+            required-projects:
+              - github.com/podenv/podenv
+              - softwarefactory-project.io/software-factory/dhall-containerfile
     gate: *jobs
